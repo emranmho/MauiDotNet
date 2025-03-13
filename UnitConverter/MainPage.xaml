@@ -2,4 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UnitConverter.MainPage">
+        
+        <Grid ColumnSpacing="10"
+              RowSpacing="10"
+              Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="LengthBtn"
+                Text="Length"
+                Clicked="LengthBtn_OnClicked"
+                BackgroundColor="LightSeaGreen"
+                Grid.Row="0"
+                Grid.Column="0"/>
+        <Button x:Name="WeightBtn"
+                Text="Weight"
+                Clicked="WeightBtn_OnClicked"
+                BackgroundColor="LightCoral"
+                Grid.Row="0"
+                Grid.Column="1"/>
+        <Button x:Name="VolumeBtn"
+                Text="Volume"
+                Clicked="VolumeBtn_OnClicked"
+                BackgroundColor="MediumSlateBlue"
+                Grid.Row="1"
+                Grid.Column="0"/>
+        <Button x:Name="TempBtn"
+                Text="Temperature"
+                Clicked="TempBtn_OnClicked"
+                BackgroundColor="LightSlateGray"
+                Grid.Row="1"
+                Grid.Column="1"/>
+        <Button x:Name="AreaBtn"
+                Text="Area"
+                Clicked="AreaBtn_OnClicked"
+                BackgroundColor="LightSalmon"
+                Grid.Row="2"
+                Grid.Column="0"/>
+        <Button x:Name="TimeBtn"
+                Text="Time"
+                Clicked="TimeBtn_OnClicked"
+                BackgroundColor="SkyBlue"
+                Grid.Row="2"
+                Grid.Column="1"/>
+    </Grid>
 </ContentPage>

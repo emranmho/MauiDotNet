@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UnitConverter.LengthPage"
+             Title="Convert Length">
+    
+    <VerticalStackLayout 
+        Spacing="20"
+        Padding="30,20">
+        <Label Text="Select Source Unit"/>
+        <Picker x:Name="SourcePicker"/>
+        <Label Text="Select Target Unit"/>
+        <Picker x:Name="TargetPicker"/>
+        <Label Text="Enter value to convert"/>
+        <Entry x:Name="SourceText"
+               Keyboard="Numeric"/>
+        <Button Text="Convert"
+                Clicked="Button_OnClicked"/>
+        <Label x:Name="ResultText"/>
+    </VerticalStackLayout>
+</ContentPage>
