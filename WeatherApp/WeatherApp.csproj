@@ -64,4 +64,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="MVVM\Views\WeatherView.xaml.cs">
+	    <DependentUpon>WeatherView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
