@@ -1,36 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BMICalculator"
+             xmlns:models="clr-namespace:BMICalculator.Models"
              x:Class="BMICalculator.MainPage">
-
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
-
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
-
+    
+    <ContentPage.Resources>
+        <models:ValueToStringConverter x:Key="ValueToString"/>
+    </ContentPage.Resources>
+    
+    <Grid RowSpacing="10"
+          Background="LightGrey">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Frame Background="White"
+               Grid.Row="0">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Height (in cm.)"></Label>
+                <Label BindingContext="{x:Reference SlrHeight}"
+                       Text="{Binding Path=Value, StringFormat='{0:F1}'}"/>
+                <Slider x:Name="SlrHeight"
+                        Minimum="40"
+                        Maximum="200"
+                        ValueChanged="SlrWeight_OnValueChanged"/>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Background="White"
+               Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Weight (in kg.)"></Label>
+                <Label BindingContext="{x:Reference SlrWeight}"
+                       Text="{Binding Path=Value, StringFormat='{0:F1}'}"/>
+                <Slider x:Name="SlrWeight"
+                        Minimum="40"
+                        Maximum="200"
+                        ValueChanged="SlrWeight_OnValueChanged"/>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Background="White"
+               Grid.Row="2">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Your BMI"/>
+                <Label Text="{Binding Path=BmiValue, StringFormat='{0:F1}'}" />
+                <Grid>
+                    <HorizontalStackLayout Spacing="5">
+                        <Label Text="{Binding Path=BmiValue, Converter={StaticResource ValueToString}}" VerticalOptions="Center"/>
+                        <ImageButton x:Name="CopyBtn"
+                                     Source="info2.svg"
+                                     HeightRequest="10"
+                                     WidthRequest="10"
+                                     Margin="5,0,0,0"
+                                     Clicked="OnTooltipClicked">
+                        </ImageButton>
+                    </HorizontalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
 </ContentPage>
